@@ -9,7 +9,7 @@ headers = {
     "User-Agent": "Mozilla/5.0"
 }
 
-# 2000+ data পাওয়ার জন্য 2000 থেকে 2024
+
 for year in range(2000, 2025):
 
     url = f"https://www.filmfansite.org.uk/date/{year}.htm"
@@ -29,23 +29,23 @@ for year in range(2000, 2025):
 
         soup = BeautifulSoup(response.text, "html.parser")
 
-        # Year page-এর main heading
+        
         heading = soup.find("h1")
 
         if heading is None:
             print("Heading not found")
             continue
 
-        # Heading-এর পরের অংশ থেকে movie খুঁজবো
+        ো
         for element in heading.find_all_next("a"):
 
             title = element.get_text(" ", strip=True)
 
-            # Empty link বাদ
+            
             if not title:
                 continue
 
-            # Menu / navigation / Oscar related link বাদ
+            
             if title.lower() in [
                 "menu",
                 "home",
@@ -58,11 +58,11 @@ for year in range(2000, 2025):
             ]:
                 continue
 
-            # Image link বাদ
+            
             if element.find("img"):
                 continue
 
-            # Movie link-এর পাশে rating image খোঁজা
+            
             rating = ""
 
             parent = element.parent
@@ -73,7 +73,7 @@ for year in range(2000, 2025):
                 if image:
                     rating = image.get("alt", "")
 
-            # শুধুমাত্র reasonable movie title
+            
             if len(title) > 1:
 
                 all_movies.append({
@@ -83,7 +83,7 @@ for year in range(2000, 2025):
                     "Movie_URL": element.get("href", "")
                 })
 
-        # Server-কে বেশি request না দেওয়ার জন্য delay
+        
         time.sleep(2)
 
     except Exception as e:
