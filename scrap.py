@@ -36,7 +36,6 @@ for year in range(2000, 2025):
             print("Heading not found")
             continue
 
-        ো
         for element in heading.find_all_next("a"):
 
             title = element.get_text(" ", strip=True)
