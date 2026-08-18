@@ -79,7 +79,7 @@ for year in range(2000, 2025):
                     "Movie_Title": title,
                     "Release_Year": year,
                     "Rating": rating,
-                    "Movie_URL": element.get("href", "")
+                    "Movie_URL": f"https://www.filmfansite.org.uk/date.htm{element.get('href', '')}"
                 })
 
         
