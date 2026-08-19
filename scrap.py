@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
 import pandas as pd
 import time
 
@@ -79,8 +80,7 @@ for year in range(2000, 2025):
                     "Movie_Title": title,
                     "Release_Year": year,
                     "Rating": rating,
-                    "Movie_URL": f"https://www.filmfansite.org.uk/date.htm{element.get('href', '')}"
-                })
+                    "Movie_URL": urljoin(url, element.get("href", ""))                })
 
         
         time.sleep(2)
